@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adicionar Parágrafos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Adicionar Parágrafos</h1>
+
+    <div class="btn-container">
+      <input
+        type="text"
+        id="paragrafoInput"
+        placeholder="Digite um parágrafo"
+      />
+      <button id="adicionarBtn">Adicionar</button>
+      <button id="mostrarBtn">Mostrar Quantidade</button>
+      <button id="resetarBtn">Resetar</button>
+    </div>
+
+    <div id="paragrafoContainer"></div>
+
+    <script>
+      let contador = 0;
+
+      document
+        .getElementById("adicionarBtn")
+        .addEventListener("click", function () {
+          const input = document.getElementById("paragrafoInput");
+          const paragrafoContainer =
+            document.getElementById("paragrafoContainer");
+
+          if (input.value.trim() !== "") {
+            const novoParagrafo = document.createElement("p");
+            novoParagrafo.textContent = input.value;
+            paragrafoContainer.appendChild(novoParagrafo);
+            contador++;
+            input.value = "";
+          } else {
+            alert("Por favor, digite um parágrafo.");
+          }
+        });
+
+      document
+        .getElementById("mostrarBtn")
+        .addEventListener("click", function () {
+          alert(`Quantidade de linhas adicionadas: ${contador}`);
+        });
+
+      document
+        .getElementById("resetarBtn")
+        .addEventListener("click", function () {
+          document.getElementById("paragrafoContainer").innerHTML = "";
+          contador = 0;
+        });
+    </script>
+  </body>
+</html>
